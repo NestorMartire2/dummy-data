@@ -1,0 +1,115 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.14.0/schema.json",
+  "name": "1115e80d656069102e5e",
+  "position": {
+    "x": 730.94224924012155,
+    "y": 512.09726443769,
+    "z": 3,
+    "height": 487.29483282674778,
+    "width": 1167.1732522796353
+  },
+  "visual": {
+    "visualType": "tableEx",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "argentina_soccer_dummy_data"
+                    }
+                  },
+                  "Property": "Away_Team"
+                }
+              },
+              "queryRef": "argentina_soccer_dummy_data.Away_Team",
+              "nativeQueryRef": "Away_Team"
+            },
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "argentina_soccer_dummy_data"
+                        }
+                      },
+                      "Property": "Away_Goals"
+                    }
+                  },
+                  "Function": 0
+                }
+              },
+              "queryRef": "Sum(argentina_soccer_dummy_data.Away_Goals)",
+              "nativeQueryRef": "Sum of Away_Goals"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Aggregation": {
+                "Expression": {
+                  "Column": {
+                    "Expression": {
+                      "SourceRef": {
+                        "Entity": "argentina_soccer_dummy_data"
+                      }
+                    },
+                    "Property": "Away_Goals"
+                  }
+                },
+                "Function": 0
+              }
+            },
+            "direction": "Descending"
+          }
+        ]
+      }
+    },
+    "drillFilterOtherVisuals": true
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "db6d05b09ca012db960d",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "argentina_soccer_dummy_data"
+              }
+            },
+            "Property": "Away_Team"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "9dfc7df0634c98577ae8",
+        "field": {
+          "Aggregation": {
+            "Expression": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "argentina_soccer_dummy_data"
+                  }
+                },
+                "Property": "Away_Goals"
+              }
+            },
+            "Function": 0
+          }
+        },
+        "type": "Advanced"
+      }
+    ]
+  }
+}

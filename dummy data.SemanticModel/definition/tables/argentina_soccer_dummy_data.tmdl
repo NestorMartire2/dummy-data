@@ -1,0 +1,103 @@
+table argentina_soccer_dummy_data
+	lineageTag: aff40ce3-ee13-4231-a8d2-a9ff8c6e70b6
+
+	column Match_ID
+		dataType: int64
+		formatString: 0
+		lineageTag: 0d941cd1-1552-419d-adf6-028adad3b567
+		summarizeBy: count
+		sourceColumn: Match_ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column Match_Date
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 6ecad1d2-9193-4ede-9d56-e2991d182b63
+		summarizeBy: none
+		sourceColumn: Match_Date
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column Home_Team
+		dataType: string
+		lineageTag: e736c4e4-28dc-4719-a84a-a7fe35d70966
+		summarizeBy: none
+		sourceColumn: Home_Team
+
+		annotation SummarizationSetBy = Automatic
+
+	column Away_Team
+		dataType: string
+		lineageTag: 6831118e-cb64-487a-9c00-ba3c5a3bef3b
+		summarizeBy: none
+		sourceColumn: Away_Team
+
+		annotation SummarizationSetBy = Automatic
+
+	column Home_Goals
+		dataType: int64
+		formatString: 0
+		lineageTag: 6c0d2f6d-4b5d-44ec-a4be-f65d28577b61
+		summarizeBy: sum
+		sourceColumn: Home_Goals
+
+		annotation SummarizationSetBy = Automatic
+
+	column Away_Goals
+		dataType: int64
+		formatString: 0
+		lineageTag: 81164c3e-b379-4c6d-a262-7b2975fd0084
+		summarizeBy: sum
+		sourceColumn: Away_Goals
+
+		annotation SummarizationSetBy = Automatic
+
+	column Result
+		dataType: string
+		lineageTag: 2ceb37a4-8c8f-4a6d-a759-7a4f1104f327
+		summarizeBy: none
+		sourceColumn: Result
+
+		annotation SummarizationSetBy = Automatic
+
+	column Stadium
+		dataType: string
+		lineageTag: 0dfc383c-2445-4d4b-8635-fd89afb0bdc0
+		summarizeBy: none
+		sourceColumn: Stadium
+
+		annotation SummarizationSetBy = Automatic
+
+	column Attendance
+		dataType: int64
+		formatString: 0
+		lineageTag: 76786f27-1653-420e-b2fe-4174eb013188
+		summarizeBy: sum
+		sourceColumn: Attendance
+
+		annotation SummarizationSetBy = Automatic
+
+	column Home_Possession_Pct
+		dataType: int64
+		formatString: 0
+		lineageTag: 85281423-15d9-48ca-970b-ba992bbbafd1
+		summarizeBy: sum
+		sourceColumn: Home_Possession_Pct
+
+		annotation SummarizationSetBy = Automatic
+
+	partition argentina_soccer_dummy_data = m
+		mode: import
+		source =
+				let
+				  Source = Csv.Document(File.Contents("C:\Users\ljb1s2\Downloads\argentina_soccer_dummy_data.csv"), [Delimiter = ",", Columns = 10, Encoding = 65001, QuoteStyle = QuoteStyle.None]),
+				  #"Promoted headers" = Table.PromoteHeaders(Source, [PromoteAllScalars = true]),
+				  #"Changed column type" = Table.TransformColumnTypes(#"Promoted headers", {{"Match_ID", Int64.Type}, {"Match_Date", type date}, {"Home_Team", type text}, {"Away_Team", type text}, {"Home_Goals", Int64.Type}, {"Away_Goals", Int64.Type}, {"Result", type text}, {"Stadium", type text}, {"Attendance", Int64.Type}, {"Home_Possession_Pct", Int64.Type}})
+				in
+				  #"Changed column type"
+
+	annotation PBI_ResultType = Table
+

@@ -1,0 +1,121 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.14.0/schema.json",
+  "name": "35940ed3b9e88acb60a2",
+  "position": {
+    "x": 0,
+    "y": 0,
+    "z": 0,
+    "height": 487.29483282674772,
+    "width": 1898.1155015197569
+  },
+  "visual": {
+    "visualType": "lineChart",
+    "query": {
+      "queryState": {
+        "Category": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "argentina_soccer_dummy_data"
+                    }
+                  },
+                  "Property": "Home_Team"
+                }
+              },
+              "queryRef": "argentina_soccer_dummy_data.Home_Team",
+              "nativeQueryRef": "Home_Team",
+              "active": true
+            }
+          ]
+        },
+        "Y": {
+          "projections": [
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "argentina_soccer_dummy_data"
+                        }
+                      },
+                      "Property": "Attendance"
+                    }
+                  },
+                  "Function": 0
+                }
+              },
+              "queryRef": "Sum(argentina_soccer_dummy_data.Attendance)",
+              "nativeQueryRef": "Sum of Attendance"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Aggregation": {
+                "Expression": {
+                  "Column": {
+                    "Expression": {
+                      "SourceRef": {
+                        "Entity": "argentina_soccer_dummy_data"
+                      }
+                    },
+                    "Property": "Attendance"
+                  }
+                },
+                "Function": 0
+              }
+            },
+            "direction": "Descending"
+          }
+        ],
+        "isDefaultSort": true
+      }
+    },
+    "drillFilterOtherVisuals": true
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "e3e4ca100b005ee418e3",
+        "field": {
+          "Aggregation": {
+            "Expression": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "argentina_soccer_dummy_data"
+                  }
+                },
+                "Property": "Attendance"
+              }
+            },
+            "Function": 0
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "a315deb807c045053d1c",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "argentina_soccer_dummy_data"
+              }
+            },
+            "Property": "Home_Team"
+          }
+        },
+        "type": "Categorical"
+      }
+    ]
+  }
+}

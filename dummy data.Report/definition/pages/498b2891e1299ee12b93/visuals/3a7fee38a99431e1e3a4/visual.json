@@ -1,0 +1,121 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.14.0/schema.json",
+  "name": "3a7fee38a99431e1e3a4",
+  "position": {
+    "x": 0,
+    "y": 512.09726443769,
+    "z": 2,
+    "height": 487.29483282674772,
+    "width": 730.94224924012155
+  },
+  "visual": {
+    "visualType": "clusteredColumnChart",
+    "query": {
+      "queryState": {
+        "Category": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "argentina_soccer_dummy_data"
+                    }
+                  },
+                  "Property": "Home_Team"
+                }
+              },
+              "queryRef": "argentina_soccer_dummy_data.Home_Team",
+              "nativeQueryRef": "Home_Team",
+              "active": true
+            }
+          ]
+        },
+        "Y": {
+          "projections": [
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "argentina_soccer_dummy_data"
+                        }
+                      },
+                      "Property": "Home_Goals"
+                    }
+                  },
+                  "Function": 0
+                }
+              },
+              "queryRef": "Sum(argentina_soccer_dummy_data.Home_Goals)",
+              "nativeQueryRef": "Sum of Home_Goals"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Aggregation": {
+                "Expression": {
+                  "Column": {
+                    "Expression": {
+                      "SourceRef": {
+                        "Entity": "argentina_soccer_dummy_data"
+                      }
+                    },
+                    "Property": "Home_Goals"
+                  }
+                },
+                "Function": 0
+              }
+            },
+            "direction": "Descending"
+          }
+        ],
+        "isDefaultSort": true
+      }
+    },
+    "drillFilterOtherVisuals": true
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "c2452cc2bea2da047c75",
+        "field": {
+          "Aggregation": {
+            "Expression": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "argentina_soccer_dummy_data"
+                  }
+                },
+                "Property": "Home_Goals"
+              }
+            },
+            "Function": 0
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "fac1f93a4e50ed3ea10d",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "argentina_soccer_dummy_data"
+              }
+            },
+            "Property": "Home_Team"
+          }
+        },
+        "type": "Categorical"
+      }
+    ]
+  }
+}
